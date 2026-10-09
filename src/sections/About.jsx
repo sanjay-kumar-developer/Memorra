@@ -8,7 +8,7 @@ export default function About() {
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_1.2fr] md:items-center">
         <motion.div initial={{opacity:0,x:-35}} whileInView={{opacity:1,x:0}} viewport={{once:true}} className="rounded-[2.5rem] bg-[#0b3028] p-8 text-[#fff9f0] md:p-12">
           <p className="text-sm uppercase tracking-[.25em] text-[#e9c46a]">From Shopping with Vibes → Memorra</p>
-          <p className="mt-7 font-serif text-3xl leading-tight">“She kept creating even when almost nobody was watching.”</p>
+          <p className="mt-7 font-serif text-3xl leading-tight">“She kept creating with<strong>Art</strong> and <strong>Math</strong>, even when almost nobody was watching.”</p>
         </motion.div>
         <motion.div initial={{opacity:0,x:35}} whileInView={{opacity:1,x:0}} viewport={{once:true}} className="space-y-5 text-[#5f655d] leading-8">
         
