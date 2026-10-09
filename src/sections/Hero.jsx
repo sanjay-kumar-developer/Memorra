@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight, Sparkles } from 'lucide-react';
 import { whatsappLink } from '../data/site';
+import logo from '../assets/logo-new.png';
 export default function Hero() {
  const {scrollY}=useScroll(); const y=useTransform(scrollY,[0,800],[0,210]); const imageY=useTransform(scrollY,[0,800],[0,-100]); const scale=useTransform(scrollY,[0,800],[1,1.12]);
  return <section id="home" className="relative isolate min-h-[100svh] overflow-hidden bg-[#0b3028] text-[#fff9f0]">
@@ -16,7 +17,7 @@ export default function Hero() {
    </div>
    <motion.div style={{y:imageY}} initial={{opacity:0,scale:.9,rotate:4}} animate={{opacity:1,scale:1,rotate:0}} transition={{duration:1.1,delay:.3,ease:[.22,1,.36,1]}} className="relative mx-auto flex w-full max-w-md items-center justify-center py-8 md:py-0">
     <motion.div animate={{rotate:360}} transition={{duration:70,repeat:Infinity,ease:'linear'}} className="absolute aspect-square w-[95%] rounded-full border border-dashed border-[#e9c46a]/30"/>
-    <motion.div animate={{y:[0,-10,0],rotate:[0,1,-1,0]}} transition={{duration:7,repeat:Infinity,ease:'easeInOut'}} className="relative flex aspect-square w-[78%] items-center justify-center rounded-full border border-[#e9c46a]/30 bg-gradient-to-br from-white/10 via-white/5 to-[#e9c46a]/10 p-6 shadow-[0_0_100px_rgba(233,196,106,.08)] backdrop-blur-sm"><div className="absolute inset-4 rounded-full border border-white/10"/><img src="/src/assets/logo-new.png" alt="Memorra logo" className="relative z-10 max-h-[78%] max-w-[78%] rounded-full object-contain drop-shadow-2xl"/></motion.div>
+    <motion.div animate={{y:[0,-10,0],rotate:[0,1,-1,0]}} transition={{duration:7,repeat:Infinity,ease:'easeInOut'}} className="relative flex aspect-square w-[78%] items-center justify-center rounded-full border border-[#e9c46a]/30 bg-gradient-to-br from-white/10 via-white/5 to-[#e9c46a]/10 p-6 shadow-[0_0_100px_rgba(233,196,106,.08)] backdrop-blur-sm"><div className="absolute inset-4 rounded-full border border-white/10"/><img src={logo} alt="Memorra logo" className="relative z-10 max-h-[78%] max-w-[78%] rounded-full object-contain drop-shadow-2xl"/></motion.div>
     <motion.div animate={{y:[0,-12,0],rotate:[-6,0,-6]}} transition={{duration:5,repeat:Infinity,ease:'easeInOut'}} className="absolute -left-1 top-[18%] rounded-2xl border border-white/10 bg-[#fff9f0] px-4 py-3 text-[#173e34] shadow-xl"><span className="block text-lg">🎁</span><span className="text-[10px] font-bold uppercase tracking-wider">Made for you</span></motion.div>
     <motion.div animate={{y:[0,10,0],rotate:[4,0,4]}} transition={{duration:6,repeat:Infinity,ease:'easeInOut'}} className="absolute -right-1 bottom-[15%] rounded-2xl border border-white/10 bg-[#e9c46a] px-4 py-3 text-[#173e34] shadow-xl"><span className="block text-lg">♡</span><span className="text-[10px] font-bold uppercase tracking-wider">Made with love</span></motion.div>
    </motion.div>
