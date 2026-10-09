@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X, Sparkles, LogOut } from 'lucide-react';
 import { whatsappLink } from '../data/site';
+import logo from '../assets/logo-new.png';
+
 const links=[['Home','#home'],['Our Story','#about'],['Gifts','#products'],['Custom','#custom'],['Gallery','#gallery'],['Contact','#contact']];
 export default function Navbar() {
   const [open,setOpen]=useState(false);
