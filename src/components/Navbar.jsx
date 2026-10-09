@@ -9,7 +9,7 @@ export default function Navbar() {
   const [open,setOpen]=useState(false);
   return <header className="fixed top-0 z-50 w-full px-3 pt-3 md:px-8 md:pt-5">
     <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/15 bg-[#092a23]/85 px-4 py-2.5 text-[#fff9f0] shadow-2xl backdrop-blur-2xl md:px-7">
-      <a href="#home" className="flex items-center gap-2.5"><img src={Logo} className="h-10 w-10 rounded-full border border-white/80 bg-white p-0.5 object-contain shadow-sm md:h-12 md:w-12" alt="Memorra logo"/><span className="font-serif text-xl tracking-wide md:text-2xl">Memorra<span className="text-[#e9c46a]">.</span></span></a>
+      <a href="#home" className="flex items-center gap-2.5"><img src={logo} className="h-10 w-10 rounded-full border border-white/80 bg-white p-0.5 object-contain shadow-sm md:h-12 md:w-12" alt="Memorra logo"/><span className="font-serif text-xl tracking-wide md:text-2xl">Memorra<span className="text-[#e9c46a]">.</span></span></a>
       <div className="hidden items-center gap-6 text-sm lg:flex">{links.map(([label,href])=><a key={href} href={href} className="nav-link">{label}</a>)}<a href={whatsappLink("Hi Memorra! I'd like to enquire about a gift.")} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#e9c46a] px-5 py-2.5 font-bold text-[#092a23] transition hover:scale-105"><Sparkles size={15}/> Let's talk</a></div>
       <button onClick={()=>setOpen(!open)} className="rounded-full p-2 transition hover:bg-white/10 lg:hidden" aria-label="Toggle menu" aria-expanded={open}>{open?<X/>:<Menu/>}</button>
     </nav>
