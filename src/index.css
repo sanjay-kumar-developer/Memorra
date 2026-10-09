@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+:root { font-family: 'DM Sans', system-ui, sans-serif; color: #173e34; background: #fff9f0; font-synthesis: none; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; }
+.font-serif { font-family: 'Playfair Display', Georgia, serif; }
+::selection { background: #e9c46a; color: #0b3028; }
+* { box-sizing: border-box; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+.nav-link { position:relative; color:rgba(255,249,240,.82); transition:color .25s ease; }
+.nav-link:hover { color:#e9c46a; }
+.nav-link::after { content:''; position:absolute; left:0; right:100%; bottom:-7px; height:1px; background:#e9c46a; transition:right .25s ease; }
+.nav-link:hover::after { right:0; }
+section[id] { scroll-margin-top:92px; }
+
+/* Touch-friendly interaction: hover is supplemented with active feedback on phones. */
+a, button { -webkit-tap-highlight-color: transparent; }
+a:active, button:active { transform: scale(.985); }
+@media (hover: none) { .nav-link::after { display:none; } .group:active { filter:brightness(.98); } }
