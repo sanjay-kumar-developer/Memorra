@@ -11,29 +11,14 @@ export default function About() {
           <p className="mt-7 font-serif text-3xl leading-tight">“She kept creating even when almost nobody was watching.”</p>
         </motion.div>
         <motion.div initial={{opacity:0,x:35}} whileInView={{opacity:1,x:0}} viewport={{once:true}} className="space-y-5 text-[#5f655d] leading-8">
-          ```jsx
-<p>
-  Vithyaa Sri began this journey under the name{" "}
-  <strong className="text-[#173e34]">Shopping with Vibes</strong>.
-  What started as a small passion gradually took shape, including a
-  small stall she set up at a college to share her handmade creations.
-  Sales were few in the beginning, but she kept going — creating for
-  friends, students and family.
-</p>
+        
 
-<p>
-  After marriage, her husband Veera became a true pillar of support.
-  Together, the idea found a new identity:{" "}
-  <strong className="text-[#173e34]">Memorra</strong>.
-</p>
+<p>Vithyaa Sri began this journey under the name <strong className="text-[#173e34]">Shopping with Vibes</strong>. What started as a small venture even had its own little stall at <strong className="text-[#173e34]">Lady Doak College</strong>. Sales were few at first, but she kept going — creating gifts for friends, students and family, one memory at a time.</p>
 
-<p>
-  Life changed again when Vithyaa Sri became a mother. Even after
-  stepping away for a while, she returned to the work she loved.
-  Today, Memorra continues to grow with the same hands-on spirit —
-  turning ideas, memories and emotions into something people can hold.
-</p>
-```
+<p>After marriage, her husband Veera became a true pillar of support. Together, the idea found a new identity: <strong className="text-[#173e34]">Memorra</strong> — a name that brought their journey together.</p>
+
+<p>Life changed again when Vithyaa became a mother. Even after stepping away for a while, she returned to the work she loved. Today, Memorra continues to grow with the same hands-on spirit, turning ideas, memories and emotions into something people can hold and cherish.</p>
+
         </motion.div>
       </div>
     </section>
