@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
 import { ArrowUpRight, Sparkles, X } from 'lucide-react'
 import logo from '../assets/logo-new.png'
 import { products } from '../data/products'
@@ -25,10 +25,15 @@ function createPath(index) {
   const radians = (baseAngle * Math.PI) / 180
 
   return [0, 1, 2, 3].map((step) => {
-    const angle = radians + step * 1.45 + Math.sin(index * 0.7 + step) * 0.28
-    const radius = baseRadius + Math.sin(index * 1.3 + step * 2.1) * 5
+    const angle =
+      radians + step * 1.45 + Math.sin(index * 0.7 + step) * 0.28
+
+    const radius =
+      baseRadius + Math.sin(index * 1.3 + step * 2.1) * 5
+
     const x = 50 + Math.cos(angle) * radius
     const y = 50 + Math.sin(angle) * radius * 0.82
+
     return {
       left: `${Math.max(7, Math.min(93, x))}%`,
       top: `${Math.max(7, Math.min(93, y))}%`,
@@ -41,14 +46,21 @@ const orbitItems = products.map((product, index) => ({
   path: createPath(index),
   duration: 14 + ((index * 7) % 12),
   delay: -((index * 2.7) % 15),
-  size: index % 5 === 0 ? 'large' : index % 3 === 0 ? 'medium' : 'small',
+  size:
+    index % 5 === 0
+      ? 'large'
+      : index % 3 === 0
+        ? 'medium'
+        : 'small',
 }))
 
 function ProductPlanet({ item, selected, onSelect }) {
   return (
     <motion.button
       type="button"
-      className={`memorra-product-planet planet-${item.size}${selected ? ' is-selected' : ''}`}
+      className={`memorra-product-planet planet-${item.size}${
+        selected ? ' is-selected' : ''
+      }`}
       initial={false}
       animate={{
         left: item.path.map((point) => point.left),
@@ -77,7 +89,9 @@ function ProductPlanet({ item, selected, onSelect }) {
       aria-pressed={selected}
       onClick={() => onSelect(item)}
     >
-      <span className="planet-emoji" aria-hidden="true">{item.emoji}</span>
+      <span className="planet-emoji" aria-hidden="true">
+        {item.emoji}
+      </span>
       <span>{item.name}</span>
     </motion.button>
   )
@@ -87,62 +101,118 @@ export default function ProductSolarSystem() {
   const [selected, setSelected] = useState(null)
 
   return (
-    <section className="memorra-solar-section" id="products">
-      <div className="memorra-solar-heading">
-        <span className="memorra-eyebrow"><Sparkles size={14} /> Made for your moments</span>
-        <h2>Little things. <em>Big feelings.</em></h2>
-        <p>Explore the little ways to turn your favourite memories into something tangible.</p>
-      </div>
+    <MotionConfig reducedMotion="never">
+      <section className="memorra-solar-section" id="products">
+        <div className="memorra-solar-heading">
+          <span className="memorra-eyebrow">
+            <Sparkles size={14} /> Made for your moments
+          </span>
 
-      <div className="memorra-solar-scene">
-        <div className="memorra-nebula" aria-hidden="true" />
-        <div className="memorra-orbit-ring ring-outer" aria-hidden="true" />
-        <div className="memorra-orbit-ring ring-middle" aria-hidden="true" />
-        <div className="memorra-orbit-ring ring-inner" aria-hidden="true" />
-        <div className="memorra-star star-one" aria-hidden="true">✦</div>
-        <div className="memorra-star star-two" aria-hidden="true">✧</div>
-        <div className="memorra-star star-three" aria-hidden="true">·</div>
+          <h2>
+            Little things. <em>Big feelings.</em>
+          </h2>
 
-        <div className="memorra-product-field">
-          {orbitItems.map((item) => (
-            <ProductPlanet
-              key={item.name}
-              item={item}
-              selected={selected?.name === item.name}
-              onSelect={(product) => setSelected((current) => current?.name === product.name ? null : product)}
+          <p>
+            Explore the little ways to turn your favourite memories into
+            something tangible.
+          </p>
+        </div>
+
+        <div className="memorra-solar-scene">
+          <div className="memorra-nebula" aria-hidden="true" />
+          <div
+            className="memorra-orbit-ring ring-outer"
+            aria-hidden="true"
+          />
+          <div
+            className="memorra-orbit-ring ring-middle"
+            aria-hidden="true"
+          />
+          <div
+            className="memorra-orbit-ring ring-inner"
+            aria-hidden="true"
+          />
+
+          <div className="memorra-star star-one" aria-hidden="true">
+            ✦
+          </div>
+          <div className="memorra-star star-two" aria-hidden="true">
+            ✧
+          </div>
+          <div className="memorra-star star-three" aria-hidden="true">
+            ·
+          </div>
+
+          <div className="memorra-product-field">
+            {orbitItems.map((item) => (
+              <ProductPlanet
+                key={item.name}
+                item={item}
+                selected={selected?.name === item.name}
+                onSelect={(product) =>
+                  setSelected((current) =>
+                    current?.name === product.name ? null : product
+                  )
+                }
+              />
+            ))}
+          </div>
+
+          <div className="memorra-solar-core">
+            <div className="memorra-core-halo" aria-hidden="true" />
+            <img
+              src={logo}
+              alt="Memorra — Every Gift Holds a Story"
             />
-          ))}
+          </div>
         </div>
 
-        <div className="memorra-solar-core">
-          <div className="memorra-core-halo" aria-hidden="true" />
-          <img src={logo} alt="Memorra — Every Gift Holds a Story" />
-        </div>
-      </div>
+        <AnimatePresence>
+          {selected && (
+            <motion.div
+              className="memorra-product-detail"
+              initial={{ opacity: 0, y: 12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 8, scale: 0.98 }}
+              transition={{ duration: 0.22 }}
+            >
+              <button
+                className="memorra-detail-close"
+                type="button"
+                aria-label="Close product details"
+                onClick={() => setSelected(null)}
+              >
+                <X size={18} />
+              </button>
 
-      <AnimatePresence>
-        {selected && (
-          <motion.div
-            className="memorra-product-detail"
-            initial={{ opacity: 0, y: 12, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 8, scale: 0.98 }}
-            transition={{ duration: 0.22 }}
-          >
-            <button className="memorra-detail-close" type="button" aria-label="Close product details" onClick={() => setSelected(null)}>
-              <X size={18} />
-            </button>
-            <span className="memorra-detail-category">{categoryNames[selected.category] || 'Personalized gifts'}</span>
-            <h3>{selected.emoji} {selected.name}</h3>
-            <p>{selected.note || descriptions[selected.category] || 'A thoughtful gift, made personal just for you.'}</p>
-            <div className="memorra-detail-bottom">
-              <strong>{selected.price}</strong>
-              <a href="#custom">Make it yours <ArrowUpRight size={16} /></a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <p className="memorra-solar-hint">Tap any little planet to explore its story</p>
-    </section>
+              <span className="memorra-detail-category">
+                {categoryNames[selected.category] || 'Personalized gifts'}
+              </span>
+
+              <h3>
+                {selected.emoji} {selected.name}
+              </h3>
+
+              <p>
+                {selected.note ||
+                  descriptions[selected.category] ||
+                  'A thoughtful gift, made personal just for you.'}
+              </p>
+
+              <div className="memorra-detail-bottom">
+                <strong>{selected.price}</strong>
+                <a href="#custom">
+                  Make it yours <ArrowUpRight size={16} />
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <p className="memorra-solar-hint">
+          Tap any little planet to explore its story
+        </p>
+      </section>
+    </MotionConfig>
   )
 }
