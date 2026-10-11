@@ -16,12 +16,19 @@ export default function About() {
         <motion.div initial={{opacity:0,x:35}} whileInView={{opacity:1,x:0}} viewport={{once:true}} className="space-y-5 text-[#5f655d] leading-8">
         
 
-          <p>Vithyaa Sri, a <strong className="text-[#173e34]">maths teacher by passion and entrepreneur by hobby</strong>, began her journey under the name <strong className="text-[#173e34]">Shopping with Vibes</strong>. Her creative journey even led to a small stall at <strong className="text-[#173e34]">Lady Doak College</strong>.</p>
+       
+          <p>
+            Vithyaa Sri, a <strong className="text-[#173e34]">maths teacher by passion and entrepreneur by hobby</strong>, began her journey under the name <strong className="text-[#173e34]">Shopping with Vibes</strong>. Her creative journey even led to a small stall at <strong className="text-[#173e34]">Lady Doak College</strong>. Throughout this journey, her parents and family stood behind her as her backbone, encouraging her dreams and supporting her every step of the way.
+          </p>
 
-          <p>After marriage, her husband Veera became a true pillar of support. Together, the idea found a new identity: <strong className="text-[#173e34]">Memorra</strong> — a name that brought their journey together.</p>
+          <p>
+            After marriage, her husband Veera became another strong pillar of support. Together, their idea found a new identity: <strong className="text-[#173e34]">Memorra</strong> — a name that brought their journey together and gave their shared dream a new beginning.
+          </p>
 
-          <p>Life changed again when Vithyaa became a mother. Even after stepping away for a while, she returned to the work she loved. Today, Memorra continues to grow with the same hands-on spirit, turning ideas, memories and emotions into something people can hold and cherish.</p>
-        </motion.div>
+          <p>
+            Life changed again when Vithyaa became a mother to <strong className="text-[#173e34]">Venba</strong>. While Vithyaa continued nurturing Memorra, her mother lovingly took care of the baby, giving her the support she needed to keep going. Her father and sister stepped in to help with courier deliveries and manage orders, making the family an essential part of Memorra's journey. With Veera by her side and her family's unwavering support, Vithyaa returned to the work she loved. Today, Memorra continues to grow with the same hands-on spirit, turning ideas, memories and emotions into something people can hold and cherish.
+          </p>
+       </motion.div>
       </div>
     </section>
   )
