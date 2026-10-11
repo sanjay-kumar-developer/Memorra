@@ -7,13 +7,7 @@ body { margin: 0; min-width: 320px; }
 .font-serif { font-family: 'Playfair Display', Georgia, serif; }
 ::selection { background: #e9c46a; color: #0b3028; }
 * { box-sizing: border-box; }
-@media (prefers-reduced-motion: reduce) {
-  .memorra-nebula,
-  .memorra-star,
-  .memorra-core-halo {
-    animation: none !important;
-  }
-}
+
 .nav-link { position:relative; color:rgba(255,249,240,.82); transition:color .25s ease; }
 .nav-link:hover { color:#e9c46a; }
 .nav-link::after { content:''; position:absolute; left:0; right:100%; bottom:-7px; height:1px; background:#e9c46a; transition:right .25s ease; }
