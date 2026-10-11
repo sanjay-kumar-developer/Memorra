@@ -21,3 +21,35 @@ section[id] { scroll-margin-top:92px; }
 a, button { -webkit-tap-highlight-color: transparent; }
 a:active, button:active { transform: scale(.985); }
 @media (hover: none) { .nav-link::after { display:none; } .group:active { filter:brightness(.98); } }
+
+
+/* Memorra: orbiting category labels */
+.memorra-orbit {
+  transform-origin: center center;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.memorra-planet {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* The orbit moves; the label counter-rotates to stay upright. */
+@keyframes memorra-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes memorra-counter-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
