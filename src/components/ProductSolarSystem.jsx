@@ -4,7 +4,8 @@ import { ArrowUpRight, Sparkles, X } from 'lucide-react'
 import logo from '../assets/logo-new.png'
 import { products } from '../data/products'
 import './ProductSolarSystem.css'
-
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
 const categoryNames = {
   albums: 'Albums & Keepsakes',
   memories: 'Frames & Memories',
@@ -55,37 +56,39 @@ const orbitItems = products.map((product, index) => ({
 }))
 
 function ProductPlanet({ item, selected, onSelect }) {
+  const planetRef = useRef(null)
+
+  useEffect(() => {
+    const element = planetRef.current
+    if (!element) return
+
+    const points = item.path
+
+    const animation = element.animate(
+      points.map((point) => ({
+        left: point.left,
+        top: point.top,
+      })),
+      {
+        duration: item.duration * 1000,
+        delay: item.delay * 1000,
+        easing: 'ease-in-out',
+        iterations: Infinity,
+        direction: 'alternate',
+        fill: 'both',
+      }
+    )
+
+    return () => animation.cancel()
+  }, [item])
+
   return (
-    <motion.button
+    <button
+      ref={planetRef}
       type="button"
       className={`memorra-product-planet planet-${item.size}${
         selected ? ' is-selected' : ''
       }`}
-      initial={false}
-      animate={{
-        left: item.path.map((point) => point.left),
-        top: item.path.map((point) => point.top),
-      }}
-      transition={{
-        left: {
-          duration: item.duration,
-          delay: item.delay,
-          ease: 'easeInOut',
-          repeat: Infinity,
-          repeatType: 'mirror',
-          repeatDelay: 0,
-        },
-        top: {
-          duration: item.duration,
-          delay: item.delay,
-          ease: 'easeInOut',
-          repeat: Infinity,
-          repeatType: 'mirror',
-          repeatDelay: 0,
-        },
-      }}
-      whileHover={{ scale: 1.08, zIndex: 10 }}
-      whileTap={{ scale: 0.96 }}
       aria-pressed={selected}
       onClick={() => onSelect(item)}
     >
@@ -93,7 +96,7 @@ function ProductPlanet({ item, selected, onSelect }) {
         {item.emoji}
       </span>
       <span>{item.name}</span>
-    </motion.button>
+    </button>
   )
 }
 
