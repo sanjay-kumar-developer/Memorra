@@ -8,8 +8,11 @@ body { margin: 0; min-width: 320px; }
 ::selection { background: #e9c46a; color: #0b3028; }
 * { box-sizing: border-box; }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .memorra-nebula,
+  .memorra-star,
+  .memorra-core-halo {
+    animation: none !important;
+  }
 }
 .nav-link { position:relative; color:rgba(255,249,240,.82); transition:color .25s ease; }
 .nav-link:hover { color:#e9c46a; }
